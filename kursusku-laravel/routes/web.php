@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\CourseController;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -15,3 +16,4 @@ Route::post('/pendaftaran', [EnrollmentController::class, 'store'])->name('enrol
 
 // 4. Route Tambahan: API untuk cek sisa kursi (AJAX)
 Route::get('/api/cek-kursi', [EnrollmentController::class, 'cekKursi'])->name('api.cek.kursi');
+Route::resource('courses', CourseController::class);
