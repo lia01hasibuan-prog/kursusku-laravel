@@ -4,125 +4,131 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $siteName }} - Laravel MVC</title>
-    
-    <!-- CSS DITULIS LANGSUNG DI SINI AGAR PASTI JALAN -->
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
         body { background-color: #f5f7f6; color: #17312b; }
-        
-        /* Header & Nav */
-        header { background-color: #0f766e; color: white; padding: 15px 6%; display: flex; justify-content: space-between; align-items: center; }
-        .logo { display: flex; align-items: center; gap: 10px; }
-        .logo-icon { background: white; color: #0f766e; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-weight: bold; font-size: 20px; }
-        .logo h2 { font-size: 20px; }
-        .logo p { font-size: 12px; opacity: 0.9; }
-        .milestone { border: 1px solid white; padding: 5px 12px; border-radius: 20px; font-size: 12px; }
-        
-        nav { background-color: #134e4a; padding: 12px 6%; display: flex; justify-content: space-between; align-items: center; }
-        .nav-links { display: flex; gap: 20px; }
-        nav a { text-decoration: none; color: white; font-size: 14px; font-weight: bold; }
-        .btn-nav { background: white; color: #134e4a; padding: 8px 16px; border-radius: 6px; }
 
-        /* Hero Section */
+        /* HEADER */
+        .main-header { background-color: #0f766e; color: white; padding: 20px 6%; text-align: center; }
+        .main-header h1 { font-size: 28px; margin-bottom: 5px; }
+        .main-header p { font-size: 14px; opacity: 0.9; }
+
+        /* NAVBAR */
+        nav { background-color: #134e4a; padding: 12px 6%; }
+        .nav-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        nav a { text-decoration: none; color: white; font-size: 14px; font-weight: bold; }
+        nav a:hover { color: #a7f3d0; }
+
+        /* HERO */
         .hero { max-width: 1100px; margin: 0 auto; padding: 60px 6%; display: flex; gap: 40px; align-items: center; }
         .hero-text { flex: 1; }
-        .subtitle { color: #134e4a; font-size: 12px; font-weight: bold; letter-spacing: 1px; margin-bottom: 10px; }
-        .hero h1 { font-size: 38px; line-height: 1.2; margin-bottom: 15px; }
-        .description { color: #6b7280; font-size: 15px; line-height: 1.6; margin-bottom: 25px; }
-        .buttons { display: flex; gap: 10px; }
-        .btn { padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 14px; }
-        .btn-primary { background: #0f766e; color: white; }
-        .btn-secondary { background: white; color: #17312b; border: 1px solid #a7f3d0; }
-        
+        .hero-text h2 { font-size: 32px; margin-bottom: 15px; color: #17312b; }
+        .hero-text p { color: #6b7280; font-size: 15px; line-height: 1.6; margin-bottom: 25px; }
         .hero-image { flex: 1; }
-        .illustration { background: linear-gradient(135deg, #dbe8e4, #f5f7f6); border: 5px solid white; border-radius: 20px; padding: 30px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
-        .illustration img { max-width: 100%; border-radius: 12px; margin-top: 15px; }
+        .hero-image img { width: 100%; border-radius: 12px; }
 
-        /* Alur MVC & Kursus Section */
-        .section-title { text-align: center; font-size: 28px; margin: 40px 0 20px 0; color: #17312b; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 6%; }
-        
-        .alur-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin-bottom: 50px; }
-        .course-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding-bottom: 60px; }
-        
-        .card { background: white; padding: 20px; border-radius: 12px; border: 1px solid #dbe8e4; text-align: center; }
-        .card strong { display: block; color: #0f766e; margin-bottom: 5px; }
-        .card p { font-size: 13px; color: #6b7280; }
-        
-        .course-card { text-align: left; }
+        /* TOMBOL */
+        .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+        .btn { display: inline-block; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 14px; background-color: #0f766e; color: white; transition: all 0.3s ease; }
+        .btn:hover { background-color: #115e59; transform: translateY(-2px); }
+
+        /* SECTION */
+        .section-container { max-width: 1100px; margin: 0 auto; padding: 50px 6%; text-align: center; }
+        .section-container h2 { font-size: 28px; margin-bottom: 30px; color: #17312b; }
+
+        /* GRID */
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: left; }
+        .card { background: white; padding: 25px; border-radius: 12px; border: 1px solid #dbe8e4; }
+        .card h3 { color: #0f766e; margin-bottom: 10px; font-size: 18px; }
+        .card p { color: #6b7280; font-size: 14px; line-height: 1.5; }
+
+        /* ALUR MVC */
+        .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; }
+        .alur-card { background: white; padding: 20px 15px; border-radius: 10px; border: 1px solid #dbe8e4; text-align: center; }
+        .alur-card strong { display: block; color: #0f766e; font-size: 16px; margin-bottom: 8px; }
+        .alur-card p { font-size: 13px; color: #6b7280; }
+
+        /* KARTU KURSUS */
         .course-card small { display: block; color: #0f766e; font-weight: bold; font-size: 12px; margin-bottom: 8px; }
-        .course-card h3 { font-size: 18px; margin-bottom: 10px; }
 
-        /* Responsive Mobile */
+        /* RESPONSIVE */
         @media (max-width: 768px) {
-            .hero, .alur-grid, .course-grid { flex-direction: column; grid-template-columns: 1fr; }
-            .hero h1 { font-size: 28px; }
-            nav, .nav-links { flex-wrap: wrap; gap: 10px; }
+            .hero { flex-direction: column; text-align: center; }
+            .hero-buttons { justify-content: center; }
+            .grid-3, .grid-5 { grid-template-columns: 1fr; }
+            .nav-links { gap: 12px; }
         }
     </style>
 </head>
 <body>
 
     <!-- HEADER -->
-    <header>
-        <div class="logo">
-            <div class="logo-icon">K</div>
-            <div>
-                <h2>{{ $siteName }}</h2>
-                <p>Laravel MVC</p>
-            </div>
-        </div>
-        <span class="milestone">Milestone 7</span>
+    <header class="main-header">
+        <h1>{{ $siteName }}</h1>
+        <p>{{ $tagline }}</p>
     </header>
 
     <!-- NAVBAR -->
     <nav>
         <div class="nav-links">
             <a href="{{ route('home') }}">Beranda</a>
+            <a href="#keunggulan">Keunggulan</a>
             <a href="#alur">Alur MVC</a>
-            <a href="#kursus">Kursus Pilihan</a>
+            <a href="#katalog">Kursus Pilihan</a>
+            <a href="{{ route('enrollments.create') }}">Daftar Kursus</a>
         </div>
-        <a href="#kursus" class="btn-nav">Lihat Program</a>
     </nav>
 
     <!-- HERO SECTION -->
     <main class="hero">
-        <section class="hero-text">
-            <p class="subtitle">PERTEMUAN 7 · FRAMEWORK LARAVEL</p>
-            <h1>Belajar terstruktur dengan Route, Controller, dan Blade.</h1>
-            <p class="description">
-                Landing page KursusKu dipindahkan dari PHP biasa ke pola framework Laravel. 
-                Request masuk melalui route, data disiapkan controller, lalu Blade merender HTML.
-            </p>
-            <div class="buttons">
-                <a href="#kursus" class="btn btn-primary">Program Belajar Unggulan</a>
-                <a href="#alur" class="btn btn-secondary">Lihat Alur MVC</a>
+        <div class="hero-text">
+            <h2>Selamat Datang di {{ $siteName }}</h2>
+            <p>Platform belajar teknologi untuk mahasiswa yang ingin meningkatkan kemampuan pemrograman web. Pilih kursus, cek ketersediaan kursi, lalu isi formulir pendaftaran.</p>
+            <div class="hero-buttons">
+                <a href="#katalog" class="btn">Lihat Kursus</a>
+                <a href="#alur" class="btn">Pelajari Alur MVC</a>
             </div>
-        </section>
-
-        <section class="hero-image">
-            <div class="illustration">
-                <h2>{{ $siteName }}</h2>
-                <p>Belajar • Praktik • Bangun Proyek</p>
-                <img src="{{ asset('images/hero-kursus.jpg') }}" alt="Hero Kursus">
-            </div>
-        </section>
+        </div>
+        <div class="hero-image">
+            <img src="{{ asset('images/hero-kursus.jpg') }}" alt="Hero Kursus">
+        </div>
     </main>
 
-    <!-- ALUR MVC SECTION -->
-    <div class="container">
-        <h2 class="section-title" id="alur">Alur MVC</h2>
-        <div class="alur-grid">
-            <div class="card"><strong>Browser</strong><p>GET /</p></div>
-            <div class="card"><strong>Route</strong><p>web.php</p></div>
-            <div class="card"><strong>Controller</strong><p>HomeController@index</p></div>
-            <div class="card"><strong>Blade View</strong><p>home.blade.php</p></div>
-            <div class="card"><strong>Response</strong><p>HTML ke browser</p></div>
+    <!-- SECTION KEUNGGULAN -->
+    <section class="section-container" id="keunggulan">
+        <h2>Mengapa Memilih {{ $siteName }}?</h2>
+        <div class="grid-3">
+            <div class="card">
+                <h3>Materi Terarah</h3>
+                <p>Kurikulum disusun sistematis dari dasar hingga mahir.</p>
+            </div>
+            <div class="card">
+                <h3>Belajar dengan Proyek</h3>
+                <p>Langsung praktik membuat proyek nyata, bukan hanya teori.</p>
+            </div>
+            <div class="card">
+                <h3>Pendampingan Praktik</h3>
+                <p>Mentor siap membantu kamu selama proses belajar.</p>
+            </div>
         </div>
+    </section>
 
-        <!-- KURSUS PILIHAN SECTION -->
-        <h2 class="section-title" id="kursus">Kursus Pilihan</h2>
-        <div class="course-grid">
+    <!-- SECTION ALUR MVC -->
+    <section class="section-container" id="alur" style="background-color: #e6f0ef;">
+        <h2>Alur MVC</h2>
+        <div class="grid-5">
+            <div class="alur-card"><strong>Browser</strong><p>GET /</p></div>
+            <div class="alur-card"><strong>Route</strong><p>web.php</p></div>
+            <div class="alur-card"><strong>Controller</strong><p>HomeController@index</p></div>
+            <div class="alur-card"><strong>Blade View</strong><p>home.blade.php</p></div>
+            <div class="alur-card"><strong>Response</strong><p>HTML ke browser</p></div>
+        </div>
+    </section>
+
+    <!-- SECTION KURSUS PILIHAN -->
+    <section class="section-container" id="katalog">
+        <h2>Kursus Pilihan</h2>
+        <div class="grid-3">
             @foreach($featured as $course)
                 <article class="card course-card">
                     <small>{{ $course['code'] }}</small>
@@ -131,7 +137,7 @@
                 </article>
             @endforeach
         </div>
-    </div>
+    </section>
 
 </body>
 </html>

@@ -7,6 +7,9 @@ class HomeController extends Controller
     public function index()
     {
         $siteName = 'KursusKu';
+        
+        // ✅ PERUBAHAN 1: Tambahkan variabel tagline
+        $tagline = 'Belajar Teknologi, Bangun Masa Depan'; 
 
         $featured = [
             [
@@ -26,6 +29,7 @@ class HomeController extends Controller
             ],
         ];
 
-        return view('home', compact('siteName', 'featured'));
+        // ✅ PERUBAHAN 2: Masukkan 'tagline' ke dalam compact()
+        return view('home', compact('siteName', 'tagline', 'featured'));
     }
 }

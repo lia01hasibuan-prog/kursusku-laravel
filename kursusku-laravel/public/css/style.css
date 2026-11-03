@@ -1,61 +1,81 @@
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; background: #f5f7f6; color: #17312b; }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f5f7f6;
-    color: #17312b;
-}
+.container { width: min(1100px, 92%); margin: 0 auto; }
 
-.container {
-    width: min(1100px, 92%);
-    margin: 0 auto;
-}
+/* Navbar */
+.navbar { background: #0f766e; color: white; padding: 16px 0; }
+.navbar .container { display: flex; justify-content: space-between; align-items: center; }
 
-.navbar {
-    background: #0f766e;
-    color: white;
-    padding: 16px 0;
-}
+/* Hero Section */
+.hero { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: center; padding: 56px 0; }
+.hero img { width: 100%; border-radius: 18px; }
 
-.navbar .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+/* Course Grid */
+.course-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding-bottom: 48px; }
+.card { background: white; padding: 20px; border-radius: 14px; border: 1px solid #dbe8e4; }
+.card small { display: block; color: #0f766e; font-weight: bold; font-size: 12px; margin-bottom: 8px; }
+.card h3 { margin: 0 0 10px 0; font-size: 18px; }
+.card p { margin: 0; color: #6b7280; font-size: 14px; line-height: 1.5; }
 
-.hero {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 32px;
-    align-items: center;
-    padding: 56px 0;
-}
+/* Alur MVC Section (Tambahan) */
+.alur-mvc { padding: 40px 0; text-align: center; }
+.alur-mvc h2 { margin-bottom: 20px; }
+.alur-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.alur-grid .card { text-align: center; }
+.alur-grid .card strong { display: block; color: #0f766e; margin-bottom: 8px; font-size: 16px; }
+.alur-grid .card p { font-size: 13px; color: #6b7280; }
 
-.hero img {
-    width: 100%;
-    border-radius: 18px;
-}
-
-.course-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    padding-bottom: 48px;
-}
-
-.card {
-    background: white;
-    padding: 20px;
-    border-radius: 14px;
+/* ✅ Info Kursi - Konsisten dengan Card */
+.info-kursi {
+    display: none;
+    margin-top: 15px;
+    padding: 14px 18px;
+    background-color: white;
+    color: #0f766e;
     border: 1px solid #dbe8e4;
+    border-left: 4px solid #0f766e;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
 }
 
+/* ✅ TAMBAHAN: Seragamkan warna input (hilangkan biru autofill) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    box-shadow: 0 0 0px 1000px white inset;
+    -webkit-text-fill-color: #17312b;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* ✅ TAMBAHAN: Style input agar konsisten */
+input, select, textarea {
+    background-color: white;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 14px;
+    color: #17312b;
+    width: 100%;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #0f766e;
+    box-shadow: 0 0 0 2px rgba(15, 118, 110, 0.1);
+}
+
+/* Responsive Mobile */
 @media (max-width: 760px) {
-    .hero,
-    .course-grid {
-        grid-template-columns: 1fr;
-    }
+    .hero, .course-grid, .alur-grid { grid-template-columns: 1fr; }
+    .navbar .container { flex-direction: column; gap: 15px; }
 }

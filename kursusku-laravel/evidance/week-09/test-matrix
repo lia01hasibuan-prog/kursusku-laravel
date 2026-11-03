@@ -1,0 +1,15 @@
+1. Home layout: PASS
+2. Navbar mobile: PASS
+3. Alur MVC section: PASS
+4. Course cards (3 items): PASS
+5. Form pendaftaran: PASS
+6. Dropdown kursus: PASS
+7. Dropdown metode: PASS
+8. Validasi form kosong: PASS
+9. Submit form berhasil: PASS
+10. Ajax cek kursi - Web Dasar: PASS
+11. Ajax cek kursi - PHP Dasar: PASS
+12. Ajax cek kursi - Laravel: PASS
+13. Network tab JSON: PASS
+14. Response JSON valid: PASS
+15. Info kursi tampil: PASS
