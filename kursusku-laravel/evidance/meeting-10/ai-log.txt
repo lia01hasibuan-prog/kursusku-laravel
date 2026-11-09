@@ -1,0 +1,43 @@
+================================================================
+AI LOG - Praktikum Meeting-11 (KursusKu Laravel)
+
+================================================================
+
+[1] Pertanyaan: Cara membuat method show() di CourseController
+    Jawaban: Tambahkan method show() dengan Route Model Binding
+    public function show(Course $course) {
+        return view('courses.show', compact('course'));
+    }
+    Hasil: Halaman detail kursus berhasil tampil
+
+[2] Pertanyaan: Error "View [courses.show] not found"
+    Jawaban: File show.blade.php salah lokasi, harus di resources/views/courses/
+    Hasil: File dipindahkan, error teratasi
+
+[3] Pertanyaan: Cara membuat Form Request untuk validasi
+    Jawaban: php artisan make:request StoreCourseRequest & UpdateCourseRequest
+    Hasil: Validasi berjalan dengan baik
+
+[4] Pertanyaan: Cara membuat method edit() dan update()
+    Jawaban: Tambahkan method edit() dan update() di CourseController
+    Hasil: Fitur edit kursus berhasil
+
+[5] Pertanyaan: HTTP Error 500 saat buka halaman edit
+    Jawaban: File partials/navbar.blade.php tidak ditemukan
+    Hasil: File dibuat, error 500 teratasi
+
+[6] Pertanyaan: Cara membuat method destroy()
+    Jawaban: Tambahkan method destroy() dengan $course->delete()
+    Hasil: Fitur hapus kursus berhasil
+
+[7] Pertanyaan: Cara membuat validasi kode duplikat & kuota max 500
+    Jawaban: Gunakan rule 'unique:courses,code' dan 'between:1,500'
+    Hasil: Validasi berjalan sesuai harapan
+
+================================================================
+FITUR YANG DIIMPLEMENTASIKAN:
+- CRUD Kursus (Create, Read, Update, Delete)
+- Form Request Validation
+- Route Model Binding
+- Flash Message Success
+================================================================

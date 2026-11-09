@@ -46,6 +46,20 @@
         .status-open { color: #0f766e; font-weight: bold; }
         .status-closed { color: #dc2626; font-weight: bold; }
         .empty { text-align: center; padding: 40px; color: #6b7280; }
+        
+        /* Tombol Aksi */
+        .btn-action {
+            display: inline-block; padding: 4px 10px; border-radius: 4px;
+            text-decoration: none; font-weight: bold; font-size: 12px;
+            margin-right: 4px; border: 1px solid;
+        }
+        .btn-detail { color: #2563eb; border-color: #2563eb; background: white; }
+        .btn-detail:hover { background: #2563eb; color: white; }
+        .btn-edit { color: #d97706; border-color: #d97706; background: white; }
+        .btn-edit:hover { background: #d97706; color: white; }
+        .btn-hapus { color: #dc2626; border-color: #dc2626; background: white; border: none; cursor: pointer; }
+        .btn-hapus:hover { background: #dc2626; color: white; }
+        .action-buttons { display: flex; gap: 4px; flex-wrap: wrap; }
     </style>
 </head>
 <body>
@@ -55,8 +69,8 @@
     </header>
     <nav>
         <div class="nav-links">
-            <a href="{{ route('home') }}">Beranda</a>
-            <a href="{{ route('enrollments.create') }}">Daftar Kursus</a>
+            <a href="{{ url('/') }}">Beranda</a>
+            <a href="{{ url('/enrollments/create') }}">Daftar Kursus</a>
             <a href="{{ route('courses.index') }}" style="color: #a7f3d0;">Kelola Kursus</a>
         </div>
     </nav>
@@ -81,6 +95,7 @@
                         <th>Kuota</th>
                         <th>Mulai</th>
                         <th>Status</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -96,10 +111,21 @@
                                     {{ ucfirst($course->status) }}
                                 </span>
                             </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <a href="{{ route('courses.show', $course) }}" class="btn-action btn-detail">Detail</a>
+                                    <a href="{{ route('courses.edit', $course) }}" class="btn-action btn-edit">Edit</a>
+                                    <form method="POST" action="{{ route('courses.destroy', $course) }}" style="display:inline;" onsubmit="return confirm('Yakin hapus kursus ini?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn-action btn-hapus">Hapus</button>
+                                    </form>
+                                </div>
+                            </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="6" class="empty">Belum ada data kursus.</td>
+                            <td colspan="7" class="empty">Belum ada data kursus.</td>
                         </tr>
                     @endforelse
                 </tbody>
