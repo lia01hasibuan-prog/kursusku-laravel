@@ -1,27 +1,16 @@
-# AI Usage Log - Praktikum Pertemuan 7 (KursusKu)
+# AI USAGE LOG – PERTEMUAN 12
 
-## Context
-- **Framework:** Laravel 11+ (PHP 8.3)
-- **Environment:** Laragon, VS Code, Windows
-- **Tujuan:** Memindahkan landing page prototype PHP ke struktur Laravel (Route -> Controller -> Blade View).
+Dokumen ini berisi catatan penggunaan AI selama pelaksanaan Praktikum Pemrograman Web III Pertemuan 12 dengan materi Relasi Database pada proyek KursusKu.
 
-## Goal
-Mendapatkan bantuan sebagai tutor dan partner debugging untuk memahami alur MVC, memperbaiki aset yang tidak muncul, dan menyelesaikan error Git, tanpa meminta AI membuatkan seluruh aplikasi secara otomatis.
+| Prompt / Pertanyaan | Saran AI | Dipakai? | Alasan |
+|---------------------|----------|----------|--------|
+| Bagaimana cara membuat tampilan form enrollment agar sama dengan referensi (ada header dan navbar)? | AI menyarankan membuat file layout induk `layouts/app.blade.php` yang berisi header "KursusKu" dan navbar, lalu menggunakan `@extends('layouts.app')` di file view enrollment. | Ya | Agar tampilan halaman enrollment memiliki header dan navbar yang konsisten dengan halaman lain. |
+| Mengapa muncul error 404 saat mengakses `/admin/enrollments/create`? | AI menjelaskan adanya konflik nama route dan menyarankan menggunakan `Route::prefix('admin')` tanpa `->name('admin.')`, lalu menjalankan `php artisan route:clear`. | Ya | Agar URL sesuai dengan referensi dan route dapat terbaca dengan benar oleh Laravel. |
+| Bagaimana mengatasi error `View [enrollments.index] not found` setelah berhasil menyimpan data? | AI menyarankan membuat file view baru `resources/views/enrollments/index.blade.php` yang berisi tabel daftar enrollment. | Ya | Karena controller melakukan redirect ke halaman index yang file view-nya belum dibuat. |
+| Bagaimana memastikan fitur Cascade Delete berjalan dengan benar? | AI memberikan langkah-langkah pengujian menggunakan Laravel Tinker: membuat data enrollment, menghapus course/participant, lalu memverifikasi enrollment ikut terhapus (output `= 0`). | Ya | Untuk membuktikan bahwa relasi `onDelete('cascade')` berfungsi dan data enrollment ikut terhapus saat data induknya dihapus. |
 
-## Constraints
-- Tidak menambahkan database atau CRUD.
-- Mempertahankan tampilan layout yang sudah ada.
-- Fokus pada pemahaman konsep, bukan sekadar copy-paste.
+## Catatan Penting
 
-## Log Interaksi dengan AI
-
-| Waktu | Masalah / Tujuan | Prompt Singkat yang Digunakan | Apa yang Diterima / Ditolak? |
-| :--- | :--- | :--- | :--- |
-| *[Isi Jam]* | Memahami alur praktikum secara keseluruhan sebelum mulai coding. | "Jelaskan langkah-langkah memindahkan prototype PHP ke Laravel dari PDF ini secara terstruktur." | **Diterima.** Mendapat ringkasan bertahap: Persiapan -> Buat Project -> Route -> Controller -> View -> Migrasi Aset. |
-| *[Isi Jam]* | Gambar hero tidak muncul (broken image) di localhost. | "Kenapa fotonya gak muncul di localhost? Sudah dijalankan di 127.0.0.1:8000." | **Diterima.** AI menjelaskan bahwa file harus ada di `public/images/` dan harus dipanggil menggunakan helper `{{ asset('images/...') }}`, bukan path lokal Windows. |
-| *[Isi Jam]* | Tampilan halaman berantakan dan section "Alur MVC" tidak muncul. | "Punya teman ku ada alur mvc di bawah aku gak ada. Ini coding home blade ku, coba tambahin." | **Diterima.** AI memberikan kode Blade lengkap dengan section Alur MVC dan menyarankan penggunaan CSS inline sementara untuk memastikan layout tidak berantakan akibat salah penempatan file CSS eksternal. |
-| *[Isi Jam]* | Error saat mengecek versi Git dan melakukan commit. | "Kenapa fatal: unrecognized argument: --onine" dan "Apa ini merah2 (Changes not staged for commit)?" | **Diterima.** AI menjelaskan bahwa `--onine` adalah typo (seharusnya `--oneline`), dan pesan merah berarti saya lupa menjalankan `git add .` sebelum `git commit`. |
-| *[Isi Jam]* | Bingung perbedaan output Git log saya (`master`) dengan teman (`main`). | "Kenapa dia bisa main aku master? Punya teman ku ada tulisan project aku gak ada." | **Diterima.** AI menjelaskan bahwa `master` dan `main` hanyalah nama default branch yang berbeda tergantung versi Git, fungsinya 100% sama. Pesan commit juga bergantung pada apa yang kita ketik manual. |
-
-## Refleksi Penggunaan AI
-AI sangat membantu sebagai "partner debugging" saat saya terjebak pada error kecil (seperti typo perintah Git atau path gambar yang salah). Namun, saya menyadari bahwa saya harus tetap membaca dan memahami kode yang diberikan AI, bukan langsung menyalinnya. Saya memastikan untuk menjalankan `php artisan optimize:clear` dan hard refresh browser setiap kali ada perubahan kode untuk memverifikasi hasilnya secara mandiri.
+- AI dimanfaatkan untuk membantu mencari solusi ketika terjadi kesalahan pada proses pengerjaan program.
+- Semua saran AI divalidasi terlebih dahulu sebelum diterapkan pada proyek.
+- Penggunaan AI mempercepat proses debugging dan membantu memahami konsep relasi database di Laravel.
